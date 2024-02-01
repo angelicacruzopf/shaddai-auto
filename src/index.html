@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./tailwind.css" rel="stylesheet" />
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ALPINE -->
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.5/dist/cdn.min.js"
+    ></script>
+
+    <title>Shaddai Mobile Auto Detail</title>
+  </head>
+  <body style="font-family: 'Open Sans', sans-serif">
+    <header>
+      <!-- FIXED NAV -->
+
+      <nav
+        class="hidden md:flex flex-row justify-between items-center text-sm bg-darkGray py-2 px-4 fixed z-50 w-full gap-4 shadow-md"
+      >
+        <div class="h-10 min-w-[100px]">
+          <img
+            src="./img/logos/logo-full-wt.png"
+            alt="Logo"
+            class="object-contain w-full h-full"
+          />
+        </div>
+        <div class="flex flex-row grow justify-center max-w-[1000px]">
+          <div
+            class="flex flex-row grow justify-center gap-2 md:gap-4 lg:gap-6 font-normal text-center text-white cursor-pointer items-center lg:text-base"
+          >
+            <a
+              href="#hero"
+              class="hover:underline hover:underline-offset-8 hover:decoration-primary hover:decoration-2 transition-all ease-in"
+            >
+              Inicio
+            </a>
+            <a
+              href="#products"
+              class="hover:underline hover:underline-offset-8 hover:decoration-primary hover:decoration-2 transition-all ease-in"
+            >
+              Productos
+            </a>
+            <a
+              href="#about"
+              class="hover:underline hover:underline-offset-8 hover:decoration-primary hover:decoration-2 transition-all ease-in"
+            >
+              Sobre nosotros
+            </a>
+            <a
+              href="#departamentos"
+              class="hover:underline hover:underline-offset-8 hover:decoration-primary hover:decoration-2 transition-all ease-in"
+            >
+              Departamentos
+            </a>
+
+            <a
+              href="#contacto"
+              class="hover:underline hover:underline-offset-8 hover:decoration-primary hover:decoration-2 transition-all ease-in"
+            >
+              Contacto
+            </a>
+            <a
+              href="#sucursales"
+              class="hover:underline hover:underline-offset-8 hover:decoration-primary hover:decoration-2 transition-all ease-in"
+            >
+              Sucursales
+            </a>
+          </div>
+        </div>
+        <div class="w-ful min-w-[150px]">
+          <button
+            type="button"
+            class="bg-primary text-white py-2 px-4 font-bold text-lg flex gap-2 items-center sm:text-xs lg:text-base w-full transition-all ease-in hover:bg-primary/50 focus:ring-4 focus:bg-primary focus:ring-primary/50 active:bg-opacity-0 active:ring-4 active:ring-primary/50 disabled:bg-opacity-50"
+          >
+            <div class="text-white">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="w-5 h-5"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </div>
+            <span class="text-nowrap">(939) 252 4501</span>
+          </button>
+        </div>
+      </nav>
+
+      <!-- MOBILE NAV -->
+
+      <nav
+        x-data="{ open: false }"
+        class="md:hidden fixed flex-row justify-between items-center text-sm bg-darkGray z-50 w-full shadow-md top-0 flex py-3 px-4"
+      >
+        <div class="flex flex-row items-center justify-between text-sm w-full">
+          <div class="h-10">
+            <img
+              src="./img/logos/logo-full-wt.png"
+              class="object-contain h-full w-full rounded-lg"
+              alt="Logo ícono"
+            />
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="flex items-center gap-2">
+              <button
+                id="call-icon"
+                class="text-lg text-primary cursor-pointer transition-all ease-in py-1 px-4 hover:text-secondary focus:ring-2 focus:ring-secondary focus:text-secondary active:ring-2 active:ring-primary active:text-primary disabled:opacity-50"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="w-5 h-5"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </button>
+              <button
+                id="bars"
+                x-on:click="open = ! open"
+                class="text-lg text-primary cursor-pointer transition-all ease-in p-1 hover:text-secondary focus:ring-2 focus:ring-secondary focus:text-secondary active:ring-2 active:ring-primary active:text-primary disabled:opacity-50"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="w-5 h-5"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M3 9a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 9Zm0 6.75a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            <div
+              x-show="open"
+              id="menu"
+              class="flex flex-col grow justify-center absolute top-[64px] right-[0] shadow-lg"
+            >
+              <div
+                class="flex flex-col grow justify-evenly font-medium text-darkGray text-center divide-y z-20 bg-white"
+              >
+                <a
+                  href="#hero"
+                  class="flex py-3 px-6 justify-center items-center self-stretch hover:bg-primary transition-all ease-in hover:bg-opacity-50"
+                >
+                  Inicio
+                </a>
+                <a
+                  href="#products"
+                  class="flex py-3 px-6 justify-center items-center self-stretch hover:bg-primary transition-all ease-in hover:bg-opacity-50"
+                >
+                  Productos
+                </a>
+                <a
+                  href="#about"
+                  class="flex py-3 px-6 justify-center items-center self-stretch hover:bg-primary transition-all ease-in hover:bg-opacity-50"
+                >
+                  Sobre nosotros
+                </a>
+                <a
+                  href="#departamentos"
+                  class="flex py-3 px-6 justify-center items-center self-stretch hover:bg-primary transition-all ease-in hover:bg-opacity-50"
+                >
+                  Departamentos
+                </a>
+                <a
+                  href="#contacto"
+                  class="flex py-3 px-6 justify-center items-center self-stretch hover:bg-primary transition-all ease-in hover:bg-opacity-50"
+                >
+                  Contacto
+                </a>
+                <a
+                  href="#sucursales"
+                  class="flex py-3 px-6 justify-center items-center self-stretch hover:bg-primary transition-all ease-in hover:bg-opacity-50"
+                >
+                  Sucursales
+                </a>
+                <a
+                  href="#horarios"
+                  class="flex py-3 px-6 justify-center items-center self-stretch hover:bg-primary transition-all ease-in hover:bg-opacity-50"
+                >
+                  Hours
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- BANNER PROMOCIONAL -->
+
+      <section>
+        <div
+          class="w-full bg-secondary text-white text-sm sm-banner flex justify-between items-center pt-8 pb-4 md:pt-4 px-4 absolute top-[50px] lg:top-[50px] z-30"
+        >
+          <div class="text-white h-5">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </div>
+          <p class="text-center">
+            Hasta el <strong>70%</strong>de <strong>descuento</strong>
+          </p>
+          <div class="text-white h-5">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </div>
+        </div>
+      </section>
+    </header>
+
+    <main>
+      <!-- HERO -->
+
+      <section
+        id="hero"
+        class="text-center flex flex-col md:flex-row items-center justify-center h-[550px] md:h-[600px] mt-[110px] md:mt-0 md:top-[20px] bg-hero-mobile bg-center bg-cover bg-no-repeat"
+      >
+        <div
+          class="hidden md:flex md:w-1/2 justify-center items-center h-full pt-0 md:pt-[60px] max-h-[470px] md:max-h-full"
+        >
+          <img
+            src="./img/banner-desktop.png"
+            alt="iPhone 15 Pro"
+            class="object-cover md:h-full h-[130%] max-h-[610px] w-full pt-10"
+          />
+        </div>
+        <div
+          class="flex flex-col justify-end md:justify-center items-center w-[80%] md:w-1/2 h-[85%] md:bg-black pt-36 md:pt-24 md:h-full gap-8 text-white"
+        >
+          <div class="w-full md:w-2/3 flex flex-col items-center gap-2">
+            <p class="font-semibold text-xl md:text-2xl">Lavado y detallado</p>
+            <h1 class="text-5xl font-bold">Profesional</h1>
+            <p class="font-semibold text-xl md:text-2xl">
+              a la puerta de tu casa
+            </p>
+          </div>
+          <div class="w-full flex flex-col items-center">
+            <div
+              class="flex flex-row items-center justify-center w-[80%] md:w-1/2 max-w-[342px]"
+            >
+              <button
+                type="submit"
+                class="bg-primary text-white py-2 px-4 font-semibold text-lg flex gap-2 items-center justify-center w-full transition-all ease-in hover:bg-primary/50 focus:ring-4 focus:bg-primary focus:ring-primary/50 active:bg-opacity-0 active:ring-4 active:ring-primary/50 disabled:bg-opacity-50"
+              >
+                Contáctanos
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRODUCTOS -->
+      <section id="products" class="flex items-center py-16 flex-col gap-8">
+        <div class="w-[90%] md:w-full flex flex-col items-center gap-8">
+          <h2 class="font-bold text-center text-2xl md:text-5xl">
+            Nuestros paquetes
+          </h2>
+
+          <div class="w-full md:hidden flex flex-col items-center gap-8">
+            <div id="slideshow-container">
+              <!-- CARD 01 -->
+
+              <div class="p-4 border-2 border-fourth/10">
+                <div class="text-left">
+                  <h3 class="font-extrabold text-2xl">Car wash</h3>
+                  <p class="text-2xl">
+                    <strong>$69 / $79 </strong>
+                  </p>
+                  <p class="text-third font-semibold text-lg">
+                    Retail Price (sedan/non-sedan)
+                  </p>
+                  <div class="ps-6">
+                    <ul class="list-disc list-outside">
+                      <li class="text-fourth">
+                        Lavado a mano y secado con toalla.
+                      </li>
+                      <li class="text-fourth">
+                        Sacudido de interiores incluyendo ventanas.
+                      </li>
+                      <li class="text-fourth">Aspirado completo</li>
+                      <li class="text-fourth">Limpieza de volante</li>
+                      <li class="text-fourth">Abrillantado de llantas</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CARD 02 -->
+
+              <div class="p-4 border-2 border-fourth/10">
+                <div class="text-left">
+                  <h3 class="font-extrabold text-2xl">Shine on</h3>
+                  <p class="text-2xl">
+                    <strong>$99 / $119</strong>
+                  </p>
+                  <p class="text-third font-semibold text-lg">
+                    Retail Price (sedan/non-sedan)
+                  </p>
+                  <div class="ps-6">
+                    <ul class="list-disc list-outside">
+                      <li class="text-fourth">
+                        Lavado a mano y secado con toalla.
+                      </li>
+                      <li class="text-fourth">
+                        Sacudido de interiores incluyendo ventanas.
+                      </li>
+                      <li class="text-fourth">Aspirado completo</li>
+                      <li class="text-fourth">Limpieza de volante</li>
+                      <li class="text-fourth">Abrillantado de llantas</li>
+                      <li class="text-fourth">Encerado y pulido a mano</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CARD 03 -->
+
+              <div class="p-4 border-2 border-fourth/10">
+                <div class="text-left">
+                  <h3 class="font-extrabold text-2xl">Full Detail</h3>
+                  <p class="text-2xl">
+                    <strong>$99 / $119</strong>
+                  </p>
+                  <p class="text-third font-semibold text-lg">
+                    Retail Price (sedan/non-sedan)
+                  </p>
+                  <div class="ps-6">
+                    <ul class="list-disc list-outside">
+                      <li class="text-fourth">
+                        Lavado a mano y secado con toalla.
+                      </li>
+                      <li class="text-fourth">
+                        Sacudido de interiores incluyendo ventanas.
+                      </li>
+                      <li class="text-fourth">Aspirado completo</li>
+                      <li class="text-fourth">Limpieza de volante</li>
+                      <li class="text-fourth">Abrillantado de llantas</li>
+                      <li class="text-fourth">Encerado y pulido a mano</li>
+                      <li class="text-fourth">
+                        Aplicación de shampoo en alfombras y tapicería
+                      </li>
+                      <li class="text-fourth">
+                        Acondicionamiento y protección de asientos de piel
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- DOTS -->
+
+            <div class="flex justify-center mb-8">
+              <span
+                class="h-4 w-4 my-0 mx-1 bg-lightGray rounded-full transition ease-in hover:bg-neutralGray"
+              ></span>
+              <span
+                class="h-4 w-4 my-0 mx-1 bg-lightGray rounded-full transition ease-in hover:bg-neutralGray"
+              ></span>
+              <span
+                class="h-4 w-4 my-0 mx-1 bg-lightGray rounded-full transition ease-in hover:bg-neutralGray"
+              ></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- PARA ESCRITORIO -->
+
+        <div
+          class="hidden md:flex flex-row gap-4 sm:flex-row sm:flex-wrap items-center md:items-start w-full justify-center"
+        >
+          <!-- CARD 01 -->
+
+          <div class="p-4 border-2 border-fourth/10 w-[30%] max-w-[310px]">
+            <div class="text-left">
+              <h3 class="font-extrabold text-2xl">Car wash</h3>
+              <p class="text-2xl">
+                <strong>$69 / $79 </strong>
+              </p>
+              <p class="text-third font-semibold text-lg">
+                Retail Price (sedan/non-sedan)
+              </p>
+              <div class="ps-6">
+                <ul class="list-disc list-outside">
+                  <li class="text-fourth">
+                    Lavado a mano y secado con toalla.
+                  </li>
+                  <li class="text-fourth">
+                    Sacudido de interiores incluyendo ventanas.
+                  </li>
+                  <li class="text-fourth">Aspirado completo</li>
+                  <li class="text-fourth">Limpieza de volante</li>
+                  <li class="text-fourth">Abrillantado de llantas</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 02 -->
+
+          <div class="p-4 border-2 border-fourth/10 w-[30%] max-w-[310px]">
+            <div class="text-left">
+              <h3 class="font-extrabold text-2xl">Shine on</h3>
+              <p class="text-2xl">
+                <strong>$99 / $119</strong>
+              </p>
+              <p class="text-third font-semibold text-lg">
+                Retail Price (sedan/non-sedan)
+              </p>
+              <div class="ps-6">
+                <ul class="list-disc list-outside">
+                  <li class="text-fourth">
+                    Lavado a mano y secado con toalla.
+                  </li>
+                  <li class="text-fourth">
+                    Sacudido de interiores incluyendo ventanas.
+                  </li>
+                  <li class="text-fourth">Aspirado completo</li>
+                  <li class="text-fourth">Limpieza de volante</li>
+                  <li class="text-fourth">Abrillantado de llantas</li>
+                  <li class="text-fourth">Encerado y pulido a mano</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 03 -->
+
+          <div class="p-4 border-2 border-fourth/10 w-[30%] max-w-[310px]">
+            <div class="text-left">
+              <h3 class="font-extrabold text-2xl">Full Detail</h3>
+              <p class="text-2xl">
+                <strong>$99 / $119</strong>
+              </p>
+              <p class="text-third font-semibold text-lg">
+                Retail Price (sedan/non-sedan)
+              </p>
+              <div class="ps-6">
+                <ul class="list-disc list-outside">
+                  <li class="text-fourth">
+                    Lavado a mano y secado con toalla.
+                  </li>
+                  <li class="text-fourth">
+                    Sacudido de interiores incluyendo ventanas.
+                  </li>
+                  <li class="text-fourth">Aspirado completo</li>
+                  <li class="text-fourth">Limpieza de volante</li>
+                  <li class="text-fourth">Abrillantado de llantas</li>
+                  <li class="text-fourth">Encerado y pulido a mano</li>
+                  <li class="text-fourth">
+                    Aplicación de shampoo en alfombras y tapicería
+                  </li>
+                  <li class="text-fourth">
+                    Acondicionamiento y protección de asientos de piel
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PDF BUTTON  -->
+        <div class="w-[90%] flex justify-center items-center">
+          <button
+            type="button"
+            class="text-white text-nowrap rounded-lg font-semibold text-lg flex gap-2 items-center transition-all ease-in bg-darkGray px-4 py-2 w-full md:w-[30%] min-w-[290px] md:max-w-[300px] justify-center hover:bg-primary focus:ring-4 focus:bg-darkGray focus:ring-darkGray/50 active:bg-primary active:ring-4 active:ring-primary/50 disabled:bg-opacity-50"
+          >
+            <p>Descargar catálogo en PDF</p>
+            <div class="flex items-center justify-center w-5 h-5">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2.25a.75.75 0 0 1 .75.75v11.69l3.22-3.22a.75.75 0 1 1 1.06 1.06l-4.5 4.5a.75.75 0 0 1-1.06 0l-4.5-4.5a.75.75 0 1 1 1.06-1.06l3.22 3.22V3a.75.75 0 0 1 .75-.75Zm-9 13.5a.75.75 0 0 1 .75.75v2.25a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5V16.5a.75.75 0 0 1 1.5 0v2.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V16.5a.75.75 0 0 1 .75-.75Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </div>
+          </button>
+        </div>
+      </section>
+
+      <!-- SOBRE NOSOTROS -->
+
+      <section id="about" class="bg-darkGray">
+        <div class="flex flex-col items-center py-16">
+          <div
+            class="flex flex-col items-center w-[90%] md:w-1/2 max-w-[700px]"
+          >
+            <div class="flex flex-col justify-center items-center gap-8">
+              <div class="h-16">
+                <img
+                  src="./img/logos/logo-full-wt.png"
+                  alt="Logotipo Nitza's Jewerly"
+                  class="object-contain h-full w-full"
+                />
+              </div>
+
+              <div class="flex flex-col gap-4">
+                <div
+                  class="text-white flex flex-col text-center font-normal gap-4"
+                >
+                  <p>
+                    En Shaddai Mobile Auto Detail nos sentimos orgullosos de
+                    llevar la excelencia directamente a tu puerta
+                  </p>
+                  <p>
+                    Nuestro equipo de profesionales utiliza tecnologìa de
+                    vanguardia y productos ecológicos para resaltar la belleza
+                    de tu vehículo.
+                  </p>
+                  <p>
+                    Pensando en tu comodidad y conveniencia ¡Brindamos servicios
+                    excepcionales donde quiera que te encuentres!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- DEPARTAMENTOS -->
+
+      <section
+        id="departamentos"
+        class="flex justify-center bg-fifth text-darkGray"
+      >
+        <div
+          class="flex flex-col items-center w-[90%] md:w-9/12 pt-16 pb-24 max-w-[1000px]"
+        >
+          <h2 class="font-bold text-center mb-10 text-2xl md:text-5xl">
+            Cargo carried
+          </h2>
+          <div
+            class="flex flex-wrap justify-evenly sm:justify-evenly md:justify-around gap-x-2 sm:gap-x-8 md:gap-x-16 gap-y-20 px-4 h-full w-full"
+          >
+            <!-- CARD 01 -->
+
+            <div
+              class="flex flex-col justify-center items-center text-center mb-4"
+            >
+              <div class="rounded-full w-32 h-32 mb-4">
+                <img
+                  src="img/departamentos/DD01s.png"
+                  alt="Lavado de exteriores"
+                  class="object-cover h-full w-full"
+                />
+                <div>
+                  <h4 class="font-semibold mt-4">Lavado de exteriores</h4>
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD 02 -->
+
+            <div
+              class="flex flex-col justify-center items-center text-center mb-4"
+            >
+              <div class="rounded-full w-32 h-32 mb-4">
+                <img
+                  src="img/departamentos/DD02s.png"
+                  alt="Limpieza de interiores"
+                  class="object-cover h-full w-full"
+                />
+                <div>
+                  <h4 class="font-semibold mt-4">Limpieza de interiores</h4>
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD 03 -->
+
+            <div
+              class="flex flex-col justify-center items-center text-center mb-4"
+            >
+              <div class="rounded-full w-32 h-32 mb-4">
+                <img
+                  src="img/departamentos/DD03s.png"
+                  alt="Lavado de motor"
+                  class="object-cover h-full w-full"
+                />
+                <div>
+                  <h4 class="font-semibold mt-4">Lavado de motor</h4>
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD 04 -->
+
+            <div
+              class="flex flex-col justify-center items-center text-center mb-4"
+            >
+              <div class="rounded-full w-32 h-32 mb-4">
+                <img
+                  src="img/departamentos/DD04s.png"
+                  alt="Pulido y encerado"
+                  class="object-cover h-full w-full"
+                />
+                <div>
+                  <h4 class="font-semibold mt-4">Pulido y encerado</h4>
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD 05 -->
+
+            <div
+              class="flex flex-col justify-center items-center text-center mb-4"
+            >
+              <div class="rounded-full w-32 h-32 mb-4">
+                <img
+                  src="img/departamentos/DD05s.png"
+                  alt="Lavado de motocicletas"
+                  class="object-cover h-full w-full"
+                />
+                <div>
+                  <h4 class="font-semibold mt-4">Lavado de motocicletas</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIOS -->
+      <section class="flex items-center py-16 flex-col bg-primary">
+        <div
+          class="w-[90%] md:w-full flex flex-col items-center max-w-[1000px]"
+        >
+          <h2 class="font-bold text-center text-2xl md:text-5xl text-white">
+            Some of our reviews
+          </h2>
+          <div class="md:hidden">
+            <div class="testimonial-container py-16 space-y-4">
+              <!-- CARD 01 -->
+              <div
+                class="flex flex-row gap-4 sm:flex-wrap items-centers w-full justify-center lg:justify-between"
+              >
+                <div
+                  class="w-full md:w-[30%] flex flex-col items-center gap-4 p-6 bg-white rounded-3xl shadow-lg h-full"
+                >
+                  <div class="flex flex-col items-center text-center gap-4">
+                    <p class="text-gray-500">
+                      <strong>"</strong>Excelente servicio, es una persona
+                      responsable y rápida y la recomiendo al 100%<strong
+                        >"</strong
+                      >
+                    </p>
+                    <h4 class="font-semibold">Yomayra Rodriguez</h4>
+                    <div>
+                      <img
+                        src="img/icons/facebook-bl.png"
+                        alt="Facebook logo"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CARD 02 -->
+              <div
+                class="flex flex-row gap-4 sm:flex-wrap items-centers w-full justify-center lg:justify-between"
+              >
+                <div
+                  class="w-full md:w-[30%] flex flex-col items-center gap-4 p-6 bg-white rounded-3xl shadow-lg h-full"
+                >
+                  <div class="flex flex-col items-center text-center gap-4">
+                    <p class="text-gray-500">
+                      <strong>"</strong>Excelente servicio, rápido y
+                      confiable<strong>"</strong>
+                    </p>
+                    <h4 class="font-semibold">Luis Hernandez</h4>
+                    <div>
+                      <img
+                        src="img/icons/facebook-bl.png"
+                        alt="Facebook logo"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CARD 03 -->
+              <div
+                class="flex flex-row gap-4 sm:flex-wrap items-centers w-full justify-center lg:justify-between"
+              >
+                <div
+                  class="w-full md:w-[30%] flex flex-col items-center gap-4 p-6 bg-white rounded-3xl shadow-lg h-full"
+                >
+                  <div class="flex flex-col items-center text-center gap-4">
+                    <p class="text-gray-500">
+                      <strong>"</strong>Excelente servicios y
+                      confianzas,recomendado mil por mil 👏👏👏👍👍💪💪<strong
+                        >"</strong
+                      >
+                    </p>
+                    <h4 class="font-semibold">Licda Yleana Silva Rodriguez</h4>
+                    <div>
+                      <img
+                        src="img/icons/facebook-bl.png"
+                        alt="Facebook logo"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- DOTS -->
+
+            <div class="flex justify-center mb-8">
+              <span
+                class="h-4 w-4 my-0 mx-1 bg-white rounded-full transition ease-in hover:bg-darkGray"
+              ></span>
+              <span
+                class="h-4 w-4 my-0 mx-1 bg-white rounded-full transition ease-in hover:bg-darkGray"
+              ></span>
+              <span
+                class="h-4 w-4 my-0 mx-1 bg-white rounded-full transition ease-in hover:bg-darkGray"
+              ></span>
+            </div>
+          </div>
+
+          <!-- PARA ESCRITORIO -->
+
+          <div
+            class="hidden md:flex flex-row gap-4 sm:flex-row sm:flex-wrap items-center md:items-start py-16 w-full justify-center"
+          >
+            <!-- CARD 01 -->
+
+            <div
+              class="w-full md:w-[30%] min-w-[280px] flex flex-col items-center gap-4 p-6 bg-white rounded-3xl shadow-lg h-full"
+            >
+              <div
+                class="flex flex-row gap-4 sm:flex-wrap items-centers w-full justify-center"
+              >
+                <div class="h-32 w-32 shadow-xl rounded-full">
+                  <img
+                    src="./img/review/RR01s.png"
+                    alt="Yomayra Rodriguez"
+                    class="object-cover"
+                  />
+                </div>
+
+                <div class="flex flex-col items-center text-center gap-4">
+                  <p class="text-gray-500">
+                    <strong>"</strong>Excelente servicio, es una persona
+                    responsable y rápida y la recomiendo al 100%<strong
+                      >"</strong
+                    >
+                  </p>
+                  <h4 class="font-semibold">Yomayra Rodriguez</h4>
+                  <div>
+                    <img
+                      src="./img/icons/facebook-bl.png"
+                      alt="Facebook logo"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD 02 -->
+
+            <div
+              class="flex flex-row gap-4 sm:flex-wrap items-centers justify-center w-[30%] min-w-[280px]"
+            >
+              <div
+                class="w-full md:w-[30%] min-w-[280px] flex flex-col items-center gap-4 p-6 bg-white rounded-3xl shadow-lg h-full"
+              >
+                <div class="h-32 w-32 shadow-xl rounded-full">
+                  <img
+                    src="./img/review/RR02s.png"
+                    alt="Luis Hernandez"
+                    class="object-coverl"
+                  />
+                </div>
+
+                <div class="flex flex-col items-center text-center gap-4">
+                  <p class="text-gray-500">
+                    <strong>"</strong>Excelente servicio, rápido y
+                    confiable<strong>"</strong>
+                  </p>
+                  <h4 class="font-semibold">Luis Hernandez</h4>
+                  <div>
+                    <img
+                      src="./img/icons/facebook-bl.png"
+                      alt="Facebook logo"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD 03 -->
+
+            <div style="width: 30%" class="w-[30%] min-w-[280px]">
+              <div
+                class="w-full md:w-[30%] min-w-[280px] flex flex-col items-center gap-4 p-6 bg-white rounded-3xl shadow-lg h-full"
+              >
+                <div class="h-32 w-32 shadow-xl rounded-full">
+                  <img
+                    src="./img/review/RR03s.png"
+                    alt="Licda Yleana Silva Rodriguez"
+                    class="object-cover"
+                  />
+                </div>
+
+                <div class="flex flex-col items-center text-center gap-4">
+                  <p class="text-gray-500">
+                    <strong>"</strong>Excelente servicios y
+                    confianzas,recomendado mil por mil 👏👏👏👍👍💪💪<strong
+                      >"</strong
+                    >
+                  </p>
+                  <h4 class="font-semibold">Licda Yleana Silva Rodriguez</h4>
+                  <div>
+                    <img
+                      src="./img/icons/facebook-bl.png"
+                      alt="Facebook logo"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACTO -->
+
+      <section id="contacto" class="flex justify-center bg-darkGray">
+        <div
+          class="flex flex-col md:flex-row py-20 w-[90%] lg:w-9/12 gap-8 text-white max-w-[1000px]"
+        >
+          <div class="flex flex-col gap-8 md:w-1/2">
+            <h2
+              class="font-bold md:mb-10 text-2xl text-center md:text-4xl md:text-left"
+            >
+              ¿Necesitas algo?
+              <br />
+              ¡Envianos un mensaje!
+            </h2>
+            <div class="font-semibold md:inline-block" hidden>
+              <div class="flex items-center mb-7">
+                <img src="./img/icons/sms-w.png" alt="Icon message" />
+                <p class="ms-4 break-all">appointments.shaddai@gmail.com</p>
+              </div>
+              <div class="flex items-center mb-7">
+                <img src="./img/icons/call-line-w.png" alt="Icon call" />
+                <div class="flex flex-col gap-y-2 ms-4">
+                  <p>(787) 516 9563</p>
+                </div>
+              </div>
+              <div class="flex items-center mb-7">
+                <img src="./img/icons/clock-w.png" alt="Icon clock" />
+                <div class="flex flex-col ms-4 gap-y-4">
+                  <p><strong>Horarios:</strong></p>
+                  <p>Lunes a domingo: 10:00am - 6:00pm</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- FORMULARIO -->
+
+          <div class="flex flex-col md:w-1/2 gap-4 w-full">
+            @antlers {{ form:contact }} {{ if success }}
+            <div class="bg-green-300 text-white p-2">{{ success }}</div>
+            {{ else }} {{ if errors }}
+            <div class="bg-red-300 text-white p-2">
+              {{ errors }} {{ value }}<br />
+              {{ /errors }}
+            </div>
+            {{ /if }}
+
+            <div class="flex flex-col gap-4 h-full text-white">
+              <div class="flex flex-col md:flex-row gap-4 w-full">
+                <div class="relative md:w-1/2">
+                  <input
+                    type="text"
+                    name="firstName"
+                    id="firstName"
+                    required
+                    maxlength="32"
+                    pattern="[A-Za-z\s]{1,32}"
+                    title="Nombres"
+                    class="w-full h-12 bg-white p-2 rounded-lg text-mediumGray invalid:border-pink-500 invalid:text-pink-600"
+                    placeholder="Nombres"
+                  />
+                  <label
+                    htmlFor="firstName"
+                    title="Nombres"
+                    data-title="Nombres"
+                  ></label>
+                  {{ if errors }}
+                  <span class="inline-block">
+                    Este campo no puede estar vacío, e.g. John
+                  </span>
+                  {{ /if }}
+                </div>
+                <div class="relative md:w-1/2">
+                  <input
+                    type="text"
+                    name="lastName"
+                    id="lastName"
+                    maxlength="32"
+                    pattern="[A-Za-z]{1,32}"
+                    required
+                    class="w-full h-12 bg-white p-4 rounded-lg text-mediumGray invalid:border-pink-500 invalid:text-pink-600"
+                    placeholder="Apellidos"
+                  />
+                  <label
+                    htmlFor="lastName"
+                    title="Apellidos"
+                    data-title="Apellidos"
+                  ></label>
+                  {{ if errors }}
+                  <span class="inline-block"
+                    >Este campo no puede estar vacío, e.g. Doe</span
+                  >
+                  {{ /if }}
+                </div>
+              </div>
+
+              <div class="col-span-2 relative">
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  class="w-full h-12 bg-white p-4 rounded-lg text-mediumGray invalid:border-pink-500 invalid:text-pink-600"
+                  pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+                  required
+                  placeholder="Correo electrónico"
+                />
+                <label
+                  for="email"
+                  title="Correo electrónico"
+                  data-title="Correo electrónico"
+                ></label>
+                {{ if errors }}
+                <span class="inline-block">
+                  Este campo no puede estar vacío, e.g. correo@ejemplo.com
+                </span>
+                {{ /if }}
+              </div>
+
+              <div class="col-span-2 relative">
+                <input
+                  type="tel"
+                  name="phone"
+                  id="phone"
+                  class="w-full h-12 bg-white p-4 rounded-lg text-mediumGray invalid:border-pink-500 invalid:text-pink-600"
+                  pattern="^\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$"
+                  required
+                  placeholder="Número telefónico"
+                />
+
+                <label htmlFor="phone" title="phone" data-title="phone"></label>
+                {{ if errors }}
+                <span class="inline-block">
+                  Este campo no puede estar vacío, e.g. XXX XXX XXXX
+                </span>
+                {{ /if }}
+              </div>
+              <div class="col-span-2 row-span-6 h-full relative">
+                <textarea
+                  name="note"
+                  id="note"
+                  required
+                  class="w-full h-32 bg-white p-4 rounded-lg resize-none invalid:border-pink-500 text-mediumGray invalid:text-pink-600"
+                  placeholder="Escribe un mensaje"
+                ></textarea>
+                <label
+                  htmlFor="message"
+                  title="Escribe un mensaje"
+                  data-title="Escribe un mensaje"
+                ></label>
+              </div>
+              {{ if errors }}
+              <span class="inline-block">
+                Este campo no puede estar vacío, e.g. correo@ejemplo.com
+              </span>
+              {{ /if }}
+            </div>
+
+            <input
+              type="text"
+              class="hidden"
+              name="{{ honeypot ?? 'honeypot' }}"
+            />
+            <div
+              class="mt-4 opacity-50 transition-opacity hover:opacity-100 hover:ease-in"
+            >
+              <button
+                type="submit"
+                class="bg-primary md:w-1/2 text-white py-2 px-4 font-semibold text-lg flex gap-2 items-center justify-center w-full hover:bg-primary transition-all ease-in"
+              >
+                Send message
+              </button>
+            </div>
+            {{ /if }} {{ /form:contact }} @endantlers
+          </div>
+        </div>
+      </section>
+
+      <!-- HORARIOS -->
+
+      <section id="horarios" class="bg-white">
+        <div
+          class="flex flex-col items-center text-neutralGray gap-y-4 md:hidden text-lg font-semibold max-w-[1000px] py-16 px-4"
+        >
+          <p class="font-bold text-black text-2xl">Horarios:</p>
+          <p>Lunes a domingo: 10:00am - 6:00pm</p>
+        </div>
+      </section>
+
+      <!-- SUCURSALES -->
+
+      <section id="sucursales" class="flex justify-center">
+        <div
+          class="w-full md:w-9/12 flex flex-col md:flex-row justify-center py-16 gap-10"
+        >
+          <h2
+            class="font-bold text-2xl text-center md:text-left md:text-5xl py-4 md:hidden"
+          >
+            ¿Tienes dudas? ¡Visitanos!
+          </h2>
+
+          <div class="md:w-1/2">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13827.744745657252!2d-95.4740074!3d29.9525141!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640c9558c67291d%3A0x40db57f893092f95!2sTriple%20I!5e0!3m2!1sen!2sus!4v1705592685337!5m2!1sen!2sus"
+              width="100%"
+              height="450"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+          <div
+            class="md:w-1/2 text-darkGray flex-col justify-center items-center gap-12 hidden md:flex"
+          >
+            <h2 class="font-bold text-2xl text-center md:text-left md:text-5xl">
+              ¿Tienes dudas? ¡Visitanos!
+            </h2>
+            <p class="text-2xl">San Juan, Puerto Rico,00926</p>
+          </div>
+          <div
+            class="w-full text-lg py-4 px-4 md:hidden font-semibold text-neutralGray"
+          >
+            <p class="font-bold text-darkGray leading-8 break-all">
+              San Juan, Puerto Rico,00926
+            </p>
+            <p>Teléfono: (787) 516 9563</p>
+            <p class="break-all">E-mail: appointments.shaddai@gmail.com</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+
+      <section class="flex justify-center bg-mediumGray">
+        <div
+          class="flex flex-col items-center w-[90%] md:w-9/12 py-16 text-white max-w-[1000px]"
+        >
+          <h2 class="font-bold mb-10 text-2xl md:text-4xl">FAQs</h2>
+          <div class="divide-y w-full">
+            <!-- QUESTION 1 -->
+
+            <div>
+              <div class="flex justify-between py-6">
+                <div class="font-bold">¿En donde se encuentran ubicados?</div>
+                <button class="text-white text-2xl">+</button>
+              </div>
+              <div class="pb-4 text-white divide-y">
+                Contamos con 2 sucursales en localizadas en Puerto Rico, USA.
+                <br />
+
+                Sucursal Corozal: Carretera 818 KM 0.8 Bo. Cibuco.
+                <br />
+
+                Sucursal Morovis: Calle Principal 44, Morovis
+              </div>
+            </div>
+
+            <!-- QUESTION 2 -->
+
+            <div>
+              <div class="flex justify-between py-6">
+                <div class="font-bold">
+                  ¿Cómo puedo contactarlos?
+                </div>
+                <button class="text-white text-2xl">+</button>
+              </div>
+              <div class="pb-4 text-white divide-y">
+                “Laborum quis quam. Dolorum et ut quod quia. Voluptas numquam
+                delectus nihil. Aut enim doloremque et ipsam.”
+              </div>
+            </div>
+
+            <!-- QUESTION 3 -->
+
+            <div>
+              <div class="flex justify-between py-6">
+                <div class="font-bold">¿Los productos tienen garantía?</div>
+                <button class="text-white text-2xl">+</button>
+              </div>
+              <div class="pb-4 text-white divide-y">
+                “Laborum quis quam. Dolorum et ut quod quia. Voluptas numquam
+                delectus nihil. Aut enim doloremque et ipsam.”
+              </div>
+            </div>
+
+            <!-- QUESTION 4 -->
+
+            <div>
+              <div class="flex justify-between py-6">
+                <div class="font-bold">¿Puedo apartar un producto?</div>
+                <button class="text-white text-2xl">+</button>
+              </div>
+              <div class="pb-4 text-white divide-y">
+                “Laborum quis quam. Dolorum et ut quod quia. Voluptas numquam
+                delectus nihil. Aut enim doloremque et ipsam.”
+              </div>
+            </div>
+
+            <!-- QUESTION 5 -->
+
+            <div>
+              <div class="flex justify-between py-6">
+                <div class="font-bold">
+                  ¿Qué tipo de productos manejan?
+                </div>
+                <button class="text-white text-2xl">+</button>
+              </div>
+              <div class="pb-4 text-white divide-y">
+                “Laborum quis quam. Dolorum et ut quod quia. Voluptas numquam
+                delectus nihil. Aut enim doloremque et ipsam.”
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <section
+        class="bg-darkGray flex flex-col justify-center items-center py-16"
+      >
+        <div class="w-[90%] max-w-[1000px]">
+          <div
+            class="w-full flex flex-col md:flex-row md:items-center justify-evenly pb-16"
+          >
+            <div class="flex flex-col items-center gap-6 md:max-w-[255px]">
+              <div
+                class="justify-self-center self-center flex justify-center items-center h-16"
+              >
+                <img
+                  src="img/logos/logo-full-wt.png"
+                  alt="Ícono del logo"
+                  class="object-ccover h-full"
+                />
+              </div>
+              <div
+                class="text-white opacity-50 text-5xl flex flex-row justify-evenly mb-6 md:mb-0 gap-8 w-2/3"
+              >
+                <img src="./img/icons/facebook-w.png" alt="Icon facebook" />
+                <img src="./img/icons/whatsapp-w.png" alt="Icon whatsapp">
+                    <img src="./img/icons/instagram-w.png" alt="Icon facebook">
+              </div>
+            </div>
+            <div
+              class="flex flex-col justify-center gap-y-4 mb-4 md:mb-0 text-white"
+            >
+              <h3 class="font-bold">Mapa del sitio</h3>
+              <ul class="grid gap-y-4 underline opacity-60">
+                <li class="sm:hidden"><a href="#hero">Inicio</a></li>
+                <li><a href="#products">Productos</a></li>
+                <li><a href="#about">Sobre nosotros</a></li>
+                <li><a href="#departamentos">Departamentos</a></li>
+              </ul>
+            </div>
+            <div class="text-white opacity-60 flex flex-col justify-center">
+              <ul class="grid gap-y-4 underline">
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#sucursales">Sucursales</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <hr class="opacity-50 w-[90%]" />
+        <span
+          class="sm:text-center text-white opacity-60 pt-8 mb-8 w-[90%] md:w-3/5"
+          >2024, Shaddai Mobile Auto Detail LLC., Todos los derechos reservados.</span
+        >
+      </section>
+    </footer>
+  </body>
+</html>
